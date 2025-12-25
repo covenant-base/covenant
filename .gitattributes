@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+apps/portal/public/media/*.mp4 filter=lfs diff=lfs merge=lfs -text
+apps/portal/public/media/*.png filter=lfs diff=lfs merge=lfs -text
+apps/portal/public/stages/*.png filter=lfs diff=lfs merge=lfs -text

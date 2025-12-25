@@ -1,0 +1,74 @@
+{
+  "name": "covenant",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Base-native infrastructure for agent task markets, x402 payments, proof verification, and EVM settlement.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/covenant-base/covenant"
+  },
+  "homepage": "https://covenantbase.com",
+  "bugs": {
+    "url": "https://github.com/covenant-base/covenant/issues"
+  },
+  "packageManager": "pnpm@10.31.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "artifacts:export": "node scripts/export-base-artifacts.mjs",
+    "build": "pnpm contracts:build && turbo run build --filter=!./contracts",
+    "contracts:build": "pnpm --filter ./contracts build",
+    "contracts:deploy:guardian:base": "pnpm --filter ./contracts deploy:guardian:base",
+    "contracts:deploy:guardian:baseSepolia": "pnpm --filter ./contracts deploy:guardian:baseSepolia",
+    "contracts:deploy:base": "pnpm --filter ./contracts deploy:base",
+    "contracts:deploy:baseSepolia": "pnpm --filter ./contracts deploy:baseSepolia",
+    "contracts:deploy:local": "pnpm --filter ./contracts deploy:local",
+    "contracts:guardian:config": "node scripts/hash-guardian-config.mjs",
+    "contracts:seed:base": "pnpm --filter ./contracts seed:base",
+    "contracts:seed:baseSepolia": "pnpm --filter ./contracts seed:baseSepolia",
+    "contracts:seed:local": "pnpm --filter ./contracts seed:local",
+    "contracts:test": "pnpm --filter ./contracts test",
+    "contracts:vk:hash": "node scripts/hash-verification-key.mjs",
+    "contracts:verify:base": "pnpm --filter ./contracts verify:base",
+    "contracts:verify:baseSepolia": "pnpm --filter ./contracts verify:baseSepolia",
+    "contracts:verify:local": "pnpm --filter ./contracts verify:local",
+    "dev": "turbo run dev",
+    "guardian:attestation:build": "pnpm --filter @covenant/sdk exec tsx scripts/build-guardian-attestation.ts",
+    "guardian:attestation:sign": "pnpm --filter @covenant/sdk exec tsx scripts/sign-guardian-attestation.ts",
+    "guardian:attestation:send": "pnpm --filter @covenant/sdk exec tsx scripts/send-guardian-verification.ts",
+    "guard:public-identifiers": "bash scripts/check-forbidden-public-identifiers.sh --repo",
+    "lint": "turbo run lint",
+    "prepare": "bash scripts/install-hooks.sh >/dev/null 2>&1 || true",
+    "typecheck": "pnpm contracts:build && turbo run typecheck --filter=!./contracts",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "size": "node scripts/check-bundle-size.mjs apps/portal --build && node scripts/check-bundle-size.mjs apps/analytics --build",
+    "test": "pnpm contracts:test && turbo run test --filter=!./contracts"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "bufferutil",
+      "utf-8-validate"
+    ],
+    "overrides": {
+      "@tanstack/react-query": "5.62.0",
+      "underscore": "1.13.8"
+    }
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@types/node": "25.6.0",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.4",
+    "prettier": "3.8.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "turbo": "2.9.6",
+    "typescript": "6.0.3"
+  }
+}
