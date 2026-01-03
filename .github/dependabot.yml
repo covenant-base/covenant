@@ -1,0 +1,46 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    groups:
+      next:
+        patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+          - "@next/*"
+      base:
+        patterns:
+          - "viem"
+          - "wagmi"
+          - "@coinbase/*"
+      tooling:
+        patterns:
+          - "eslint*"
+          - "prettier"
+          - "typescript"
+          - "turbo"
+          - "@types/*"
+
+  - package-ecosystem: "cargo"
+    directory: "/services/indexer"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+
+  - package-ecosystem: "docker"
+    directory: "/services/indexer"
+    schedule:
+      interval: "weekly"
+      day: "monday"
