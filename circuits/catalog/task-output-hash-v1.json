@@ -1,0 +1,9 @@
+{
+  "slug": "task-output-hash",
+  "displayName": "Deterministic Task Output Hashing",
+  "lifecycle": "planned",
+  "version": 1,
+  "verifier": "groth16-bn254",
+  "publicInputs": ["task_id", "input_hash", "output_hash"],
+  "summary": "Planned reusable helper circuit for binding task inputs and outputs without redefining hash order per task type."
+}

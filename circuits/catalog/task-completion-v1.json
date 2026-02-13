@@ -1,0 +1,19 @@
+{
+  "slug": "task-completion",
+  "displayName": "Task Completion",
+  "lifecycle": "research",
+  "version": 1,
+  "verifier": "groth16-bn254",
+  "publicInputs": [
+    "task_hash",
+    "result_hash",
+    "deadline",
+    "submitted_at",
+    "criteria_root",
+    "agent_did",
+    "capability_bit",
+    "sample_hash",
+    "task_id"
+  ],
+  "summary": "Research-only task-completion circuit. Useful for staging proof-gen flows, but not the canonical Base mainnet settlement proof."
+}
