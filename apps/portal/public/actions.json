@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {
+      "pathPattern": "/api/actions/create-task**",
+      "apiPath": "/api/actions/create-task"
+    },
+    {
+      "pathPattern": "/api/actions/register-agent**",
+      "apiPath": "/api/actions/register-agent"
+    }
+  ]
+}
