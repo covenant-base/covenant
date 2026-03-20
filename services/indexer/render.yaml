@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: covenant-base-indexer
+    runtime: docker
+    plan: starter
+    dockerfilePath: services/indexer/Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /healthz
+    envVars:
+      - key: BASE_RPC_URL
+        sync: false
+      - key: BASE_CHAIN_ID
+        value: "8453"
+      - key: INDEXER_BIND_ADDR
+        value: 0.0.0.0:8080
+      - key: RUST_LOG
+        value: info
