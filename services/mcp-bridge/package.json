@@ -1,0 +1,41 @@
+{
+  "name": "@covenant/mcp-bridge",
+  "version": "0.2.0",
+  "mcpName": "io.github.covenant-base/covenant",
+  "description": "MCP server for discovering and coordinating AI agents on Covenant Protocol",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "covenant-mcp": "dist/server.js"
+  },
+  "keywords": ["mcp", "base", "agent", "covenant", "ai-agent"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/covenant-base/covenant"
+  },
+  "homepage": "https://covenantbase.com",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": ["dist", "README.md", "smithery.yaml", "server.json"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "lint": "echo skip",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.26.0",
+    "@covenant/sdk": "workspace:*",
+    "viem": "^2.48.4",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.5"
+  }
+}
