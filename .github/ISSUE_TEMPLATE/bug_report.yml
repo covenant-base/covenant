@@ -1,0 +1,70 @@
+name: Bug report
+description: Something is broken. For security issues, use SECURITY.md instead.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: check existing issues and the docs/spec for the affected component.
+        **Security-sensitive bugs (fund loss, key exposure, unauthorized state change) must go through the private advisory flow — see [SECURITY.md](../../SECURITY.md).**
+
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the codebase?
+      placeholder: "contracts/CovenantTaskMarket.sol, services/indexer, apps/portal, packages/sdk, etc."
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Commit / version
+      description: Output of `git rev-parse HEAD` or the tagged release.
+      placeholder: "abc1234 or v0.1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include error messages, transaction signatures, logs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Minimal commands or a failing test. The shorter, the better.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, Rust version, Foundry version, and any Base RPC/provider details.
+      render: shell
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: This is not a security vulnerability (if it is, I will close this and use the private advisory flow)
+          required: true
+        - label: I've searched existing issues
+          required: true

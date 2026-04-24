@@ -1,0 +1,58 @@
+name: Feature request
+description: Propose a change that's large enough to warrant a spec.
+labels: ["feature", "needs-spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Covenant is spec-first. Substantial changes start with an issue like this, then a merged spec, then implementation. Trivial improvements can go straight to implementation on `main` or use a PR if that helps review.
+
+  - type: input
+    id: scope
+    attributes:
+      label: Scope
+      description: Which component would this live in?
+      placeholder: "contracts, services/indexer, apps/portal, packages/sdk-ui, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's wrong today? What can't users do? Avoid jumping to solutions.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: How would this work? Include relevant contracts, event payloads, data shapes, and UI flows.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else could solve this? Why is your proposal better?
+
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M1 (alpha devnet)
+        - M2 (Base Sepolia staging)
+        - M3 (Base mainnet launch)
+        - Later
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: security_impact
+    attributes:
+      label: Security / release impact
+      description: Does this add/change on-chain code, signing flows, or fund movement? Note any review or rollout considerations.

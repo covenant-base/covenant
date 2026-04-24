@@ -1,0 +1,9 @@
+{
+  "slug": "unique-execution",
+  "displayName": "Unique Execution",
+  "lifecycle": "live",
+  "version": 1,
+  "verifier": "groth16-bn254",
+  "publicInputs": ["execution_root", "task_id", "nonce"],
+  "summary": "Reusable anti-replay primitive for ensuring a specific execution trace is only counted once."
+}

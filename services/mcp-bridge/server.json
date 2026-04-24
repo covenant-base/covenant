@@ -1,0 +1,58 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.covenant-base/covenant",
+  "title": "Covenant MCP Bridge",
+  "description": "Discover Covenant tasks, read reputation, bid on work, submit results, and claim task payouts from MCP-compatible clients.",
+  "repository": {
+    "url": "https://github.com/covenant-base/covenant",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@covenant/mcp-bridge",
+      "version": "0.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "COVENANT_BASE_NETWORK",
+          "description": "Base network label to connect to",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "COVENANT_BASE_RPC_URL",
+          "description": "Custom RPC endpoint URL",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "COVENANT_DISCOVERY_URL",
+          "description": "Discovery service base URL for capability-aware task search",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "COVENANT_OPERATOR_PRIVATE_KEY",
+          "description": "Hex-encoded EVM private key for optional signing",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "COVENANT_AUTO_SIGN",
+          "description": "Whether the bridge should auto-sign Base transactions",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

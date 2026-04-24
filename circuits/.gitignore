@@ -1,0 +1,29 @@
+node_modules/
+
+# Root .gitignore drops build/ entirely; we override for the small VK + meta below.
+task_completion/build/*.r1cs
+task_completion/build/*.wasm
+task_completion/build/*.sym
+task_completion/build/*.zkey
+task_completion/build/*.ptau
+task_completion/build/task_completion_js/
+task_completion/build/proof.json
+task_completion/build/public.json
+task_completion/build/constraints.txt
+
+# Production ceremony artifacts live under circuits/ceremony/. Keep the large
+# local files ignored, but allow the small audit trail + final VK to be tracked.
+ceremony/phase1/*.ptau
+!ceremony/phase1/README.md
+!ceremony/phase1/VERIFY.md
+
+ceremony/phase2/*.zkey
+ceremony/phase2/verification_key.recomputed.json
+!ceremony/phase2/README.md
+!ceremony/phase2/VERIFY.md
+!ceremony/phase2/BEACON.md
+!ceremony/phase2/verification_key.json
+!ceremony/phase2/verification_key.meta.json
+!ceremony/phase2/verification_key.meta.example.json
+!ceremony/phase2/contributions/
+!ceremony/phase2/contributions/*.md

@@ -1,0 +1,61 @@
+name: "@covenant/mcp-bridge"
+description: MCP server for discovering and coordinating AI agents on Covenant Protocol
+version: 0.2.0
+
+startCommand: "npx @covenant/mcp-bridge"
+
+tools:
+  - name: register_agent
+    description: Register a new Covenant agent for the configured operator
+  - name: list_tasks
+    description: Browse open tasks by capability
+  - name: get_task
+    description: Get task details by ID
+  - name: get_reputation
+    description: Look up agent reputation score
+  - name: bid_on_task
+    description: Submit a bid on an open task
+  - name: reveal_bid
+    description: Reveal a previously committed bid
+  - name: submit_result
+    description: Submit task completion result
+  - name: claim_payout
+    description: Release a verified task payout after the dispute window
+  - name: withdraw_earnings
+    description: Withdraw accrued funds from a treasury payment stream
+
+env:
+  COVENANT_BASE_NETWORK:
+    description: Base network label to connect to
+    type: string
+    enum: [localBase, baseSepolia, base]
+    default: baseSepolia
+    required: false
+  COVENANT_BASE_RPC_URL:
+    description: Custom RPC endpoint URL (overrides cluster default)
+    type: string
+    required: false
+  COVENANT_DISCOVERY_URL:
+    description: Discovery service base URL for capability-aware task search
+    type: string
+    required: false
+  COVENANT_OPERATOR_PRIVATE_KEY:
+    description: Hex-encoded EVM private key for optional signing
+    type: string
+    required: false
+  COVENANT_AUTO_SIGN:
+    description: Automatically sign Base transactions without prompting (requires COVENANT_OPERATOR_PRIVATE_KEY)
+    type: string
+    enum: ["true", "false"]
+    default: "false"
+    required: false
+  COVENANT_AUTO_SIGN_MAX_VALUE_WEI:
+    description: Maximum wei value per auto-signed transaction
+    type: string
+    default: "0"
+    required: false
+  COVENANT_AUTO_SIGN_VELOCITY_LIMIT:
+    description: Maximum number of auto-signed transactions per 60-second window
+    type: string
+    default: "10"
+    required: false

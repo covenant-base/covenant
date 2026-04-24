@@ -1,0 +1,72 @@
+name: Security finding tracking
+description: Track a public or already-triaged security finding. Maintainers only.
+labels: ["security"]
+title: "[Security] <short finding description>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Use this template only for findings that are already public or have already completed private triage and do not represent an actively exploitable vulnerability.** Critical and High issues with real user impact are tracked privately via GitHub Security Advisories.
+
+  - type: input
+    id: finding_source
+    attributes:
+      label: Finding source
+      placeholder: "private advisory, researcher report, audit note, etc."
+    validations:
+      required: true
+
+  - type: input
+    id: finding_id
+    attributes:
+      label: Finding ID
+      description: Use any stable identifier, ticket number, or advisory slug.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+        - Informational
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected code
+      description: Files, functions, commit hash.
+    validations:
+      required: true
+
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Planned remediation
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Accepted, fix pending
+        - Fix in progress
+        - Fixed, awaiting retest
+        - Retest passed
+        - Risk accepted (with rationale)
+        - Disputed
+    validations:
+      required: true

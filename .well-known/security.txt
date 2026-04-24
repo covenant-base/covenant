@@ -1,0 +1,9 @@
+Contact: mailto:security@covenantbase.com
+Contact: https://github.com/covenant-base/covenant/security/advisories/new
+Expires: 2027-04-23T00:00:00.000Z
+Encryption: https://covenantbase.com/SECURITY-PGP-PUBLIC.asc
+Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/0FE8E47BC44A599C84EDBD37336232E226C825A7
+Preferred-Languages: en
+Canonical: https://covenantbase.com/.well-known/security.txt
+Policy: https://github.com/covenant-base/covenant/blob/main/SECURITY.md
+Acknowledgments: https://github.com/covenant-base/covenant/blob/main/SECURITY.md

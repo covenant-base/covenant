@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "@covenant/sdk": ["packages/sdk/src/index.ts"],
+      "@covenant/sdk/*": ["packages/sdk/src/*"],
+      "@covenant/sdk-ui": ["packages/sdk-ui/src/index.ts"],
+      "@covenant/sdk-ui/*": ["packages/sdk-ui/src/*"],
+      "@covenant/ui": ["packages/ui/src/index.ts"],
+      "@covenant/ui/*": ["packages/ui/src/*"],
+
+      "@covenant/config/brand": ["packages/config/brand.mjs"],
+      "@covenant/config/networks": ["packages/config/networks.mjs"]
+    }
+  }
+}

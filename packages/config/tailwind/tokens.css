@@ -1,0 +1,192 @@
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/archivo-black/400.css';
+
+/* ================================================================
+   Covenant Design Tokens
+   Single source of truth for the entire monorepo.
+   Apps import this file — never redefine these values locally.
+   ================================================================ */
+
+:root {
+  /* ── Color: Core ──────────────────────────────────── */
+  --paper:   #000000;
+  --paper-2: #05070c;
+  --paper-3: #0b1020;
+  --ink:     #ffffff;
+  --ink-2:   #f4f4f5;
+  --ink-3:   #d4d4d8;
+  --mute:    #a1a1aa;
+  --mute-2:  #71717a;
+  --mute-3:  #27272a;
+
+  /* ── Color: Accent ────────────────────────────────── */
+  --accent-start: #0a0fff;
+  --accent-end:   #00d1ff;
+  --bloom:        rgba(255, 255, 255, 0.22);
+  --lime:         var(--accent-start);
+  --lime-dim:     #3e8bff;
+  --lime-mute:    var(--accent-end);
+
+  /* ── Color: Semantic ──────────────────────────────── */
+  --danger:  #ff6b6b;
+  --warning: #f6c453;
+  --info:    #00d1ff;
+  --success: #34d399;
+
+  /* ── Typography: Stacks ───────────────────────────── */
+  --font-display: 'Sora Variable', 'Sora', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-body:    'Sora Variable', 'Sora', 'Segoe UI', sans-serif;
+
+  /* ── Typography: Scale ────────────────────────────── */
+  --text-hero:    clamp(48px, 8vw, 112px);
+  --text-h1:      clamp(36px, 5.5vw, 72px);
+  --text-h2:      clamp(32px, 4.5vw, 56px);
+  --text-h3:      clamp(24px, 3vw, 40px);
+  --text-h4:      22px;
+  --text-body:    16px;
+  --text-body-sm: 15px;
+  --text-ui:      14px;
+  --text-caption:  12px;
+  --text-label:   11px;
+  --text-micro:   10px;
+
+  /* ── Typography: Leading ──────────────────────────── */
+  --leading-display: 0.92;
+  --leading-tight:   1.05;
+  --leading-body:    1.6;
+  --leading-relaxed: 1.7;
+
+  /* ── Typography: Tracking ─────────────────────────── */
+  --tracking-tight:  -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.15em;
+
+  /* ── Spacing ──────────────────────────────────────── */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* ── Layout: Page Insets ──────────────────────────── */
+  --inset-page:   clamp(20px, 5vw, 80px);
+  --inset-section: clamp(72px, 9vw, 128px);
+  --inset-frame-outer: clamp(6px, 0.8vw, 14px);
+  --inset-frame-inner: clamp(14px, 1.8vw, 28px);
+  --inset-frame-corner: clamp(14px, 1.5vw, 22px);
+
+  /* ── Borders ──────────────────────────────────────── */
+  --border-subtle:  1px solid rgba(10, 10, 10, 0.10);
+  --border-default: 1px solid rgba(10, 10, 10, 0.20);
+  --border-strong:  1px solid rgba(10, 10, 10, 0.40);
+  --border-solid:   1px solid var(--ink);
+
+  /* ── Shadows ──────────────────────────────────────── */
+  --shadow-sm:  0 1px 2px rgba(10, 10, 10, 0.06);
+  --shadow-md:  0 2px 8px rgba(10, 10, 10, 0.08);
+  --shadow-lg:  0 4px 16px rgba(10, 10, 10, 0.10);
+  --shadow-glow: 0 0 20px rgba(6, 245, 18, 0.15);
+
+  /* ── Transitions ──────────────────────────────────── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   100ms;
+  --duration-normal: 150ms;
+  --duration-slow:   300ms;
+
+  /* ── Radii ────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-sm:   12px;
+  --radius-md:   22px;
+
+  color-scheme: dark;
+}
+
+/* ── Dark Mode ────────────────────────────────────── */
+[data-theme='dark'] {
+  --paper:   #000000;
+  --paper-2: #05070c;
+  --paper-3: #0b1020;
+  --ink:     #ffffff;
+  --ink-2:   #f4f4f5;
+  --ink-3:   #d4d4d8;
+  --mute:    #a1a1aa;
+  --mute-2:  #71717a;
+  --mute-3:  #27272a;
+  --accent-start: #0a0fff;
+  --accent-end:   #00d1ff;
+  --bloom:        rgba(255, 255, 255, 0.22);
+  --lime:         var(--accent-start);
+  --lime-dim:     #3e8bff;
+  --lime-mute:    var(--accent-end);
+  --danger:  #ff6b6b;
+  --warning: #f6c453;
+  --info:    #00d1ff;
+  --success: #34d399;
+  color-scheme: dark;
+}
+
+/* ── Tailwind 4 Theme Bridge ──────────────────────── */
+@theme inline {
+  --color-paper:   var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink:     var(--ink);
+  --color-ink-2:   var(--ink-2);
+  --color-ink-3:   var(--ink-3);
+  --color-mute:    var(--mute);
+  --color-mute-2:  var(--mute-2);
+  --color-mute-3:  var(--mute-3);
+  --color-lime:      var(--lime);
+  --color-lime-dim:  var(--lime-dim);
+  --color-lime-mute: var(--lime-mute);
+  --color-accent-start: var(--accent-start);
+  --color-accent-end:   var(--accent-end);
+  --color-danger:  var(--danger);
+  --color-warning: var(--warning);
+  --color-info:    var(--info);
+  --color-success: var(--success);
+
+  --font-display: var(--font-display);
+  --font-mono:    var(--font-mono);
+  --font-sans:    var(--font-body);
+
+  --shadow-sm:   var(--shadow-sm);
+  --shadow-md:   var(--shadow-md);
+  --shadow-lg:   var(--shadow-lg);
+  --shadow-glow: var(--shadow-glow);
+}
+
+/* ── Base Reset ───────────────────────────────────── */
+* {
+  border-color: var(--ink);
+}
+
+html,
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 82% 18%, rgba(10, 15, 255, 0.3), transparent 24%),
+    radial-gradient(circle at 84% 82%, rgba(0, 209, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.05), transparent 20%);
+}
+
+body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}

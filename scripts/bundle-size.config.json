@@ -1,0 +1,32 @@
+{
+  "_comment": "First Load JS limits per route (kB). Regression guard: lowering a limit requires a matching code change, and raising a limit requires explicit review with updated measurements.",
+  "portal": {
+    "default": 280,
+    "routes": {
+      "/": 200,
+      "/_not-found": 110,
+      "/agents/[did]": 410,
+      "/agents/leaderboard": 410,
+      "/agents/register": 410,
+      "/api/auth/logout": 110,
+      "/api/auth/me": 110,
+      "/api/auth/nonce": 110,
+      "/api/auth/verify": 110,
+      "/api/auth/ws-token": 110,
+      "/dashboard": 410,
+      "/governance": 410,
+      "/marketplace": 410,
+      "/retro/check": 410,
+      "/tasks": 410,
+      "/tasks/[id]": 410,
+      "/treasury": 410
+    }
+  },
+  "analytics": {
+    "default": 120,
+    "routes": {
+      "/": 200,
+      "/_not-found": 110
+    }
+  }
+}

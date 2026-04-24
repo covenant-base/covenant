@@ -1,0 +1,501 @@
+/* ================================================================
+   Covenant Shared Styles
+   Reusable patterns consumed by portal, website, docs, analytics.
+   Import AFTER tokens.css.
+   ================================================================ */
+
+/* ── Smooth scroll ────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ── Paper texture ────────────────────────────────── */
+.bg-paper-texture {
+  background-color: var(--paper);
+}
+
+/* ── Marquee ──────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ── Mobile nav dialog ────────────────────────────── */
+dialog.mobile-nav {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+}
+dialog.mobile-nav::backdrop {
+  background: var(--paper);
+}
+
+/* ── Glitch Button ────────────────────────────────── *
+ * Inspired by GlitchComposition: halftone dots, barcode
+ * scanlines, lime accent blocks. Black/white base, lime
+ * only appears as micro-detail + hover artifact.
+ * ──────────────────────────────────────────────────── */
+.btn-glitch {
+  --_accent: var(--lime);
+  --_ink: var(--ink);
+  --_bg: rgba(255, 255, 255, 0.04);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--_ink);
+  background: var(--_bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 16px 40px rgba(10, 15, 255, 0.14);
+  overflow: visible;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-normal) var(--ease-default),
+    background var(--duration-normal) var(--ease-default),
+    color var(--duration-normal) var(--ease-default),
+    box-shadow var(--duration-normal) var(--ease-default),
+    transform var(--duration-normal) var(--ease-default);
+  text-decoration: none;
+  isolation: isolate;
+}
+
+/* ── Sizes ──────────────────────────────────────── */
+.btn-glitch--sm {
+  height: 34px;
+  padding: 0 1rem;
+  font-size: var(--text-micro);
+}
+.btn-glitch--lg {
+  height: 50px;
+  padding: 0 2rem;
+  font-size: var(--text-caption);
+}
+
+/* ── Corner-cut accents — paper triangles that turn lime on hover ── */
+.btn-glitch__accent {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  filter: blur(2px);
+  z-index: 3;
+  transition: background var(--duration-normal) var(--ease-default);
+  pointer-events: none;
+}
+.btn-glitch__accent--tr {
+  top: 8px;
+  right: 10px;
+}
+.btn-glitch__accent--bl {
+  bottom: 8px;
+  left: 10px;
+}
+
+/* ── Corner border — black L-shape connecting top-right, fades on hover ── */
+.btn-glitch__corner {
+  position: absolute;
+  inset: 1px;
+  border-radius: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-default);
+}
+.btn-glitch:hover .btn-glitch__corner {
+  opacity: 0;
+}
+
+/* ── Halftone dot overlay — from GlitchComposition's dot patterns ── */
+.btn-glitch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 35%),
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.08), transparent 26%);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--duration-fast);
+}
+
+/* ── Scanline sweep — barcode-inspired, moves on hover ── */
+.btn-glitch::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(10, 15, 255, 0.78), rgba(0, 209, 255, 0.72));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(18px);
+}
+
+/* ── Label — positioned above overlays ── */
+.btn-glitch__label {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Chromatic ghost — lime aberration, from GlitchComposition's color offset ── */
+.btn-glitch__label::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--_accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Hover State ────────────────────────────────── */
+.btn-glitch:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 48px rgba(10, 15, 255, 0.18),
+    0 0 32px rgba(0, 209, 255, 0.14);
+  transform: translateY(-1px);
+}
+.btn-glitch:hover::before {
+  opacity: 1;
+  animation: none;
+}
+.btn-glitch:hover::after {
+  opacity: 0.22;
+  animation: none;
+}
+.btn-glitch:hover .btn-glitch__label {
+  animation: none;
+}
+.btn-glitch:hover .btn-glitch__label::after {
+  animation: none;
+  opacity: 0.45;
+  transform: translate(1px, 0);
+}
+.btn-glitch:hover .btn-glitch__accent {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Solid variant — glassy gradient fill ── */
+.btn-glitch--solid {
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(10, 15, 255, 0.94), rgba(0, 209, 255, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 18px 40px rgba(10, 15, 255, 0.28),
+    0 0 36px rgba(0, 209, 255, 0.18);
+}
+.btn-glitch--solid .btn-glitch__accent {
+  background: rgba(255, 255, 255, 0.22);
+}
+.btn-glitch--solid:hover {
+  background:
+    linear-gradient(135deg, rgba(18, 23, 255, 0.98), rgba(31, 226, 255, 0.98));
+  color: #ffffff;
+}
+.btn-glitch--solid:hover .btn-glitch__accent {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* ── Ghost variant — text-only ── */
+.btn-glitch--ghost {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+.btn-glitch--ghost .btn-glitch__accent {
+  display: none;
+}
+.btn-glitch--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Active / pressed ─────────────────────────── */
+.btn-glitch:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--paper);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.btn-glitch:active .btn-glitch__accent {
+  background: rgba(255, 255, 255, 0.18);
+}
+.btn-glitch:active .btn-glitch__label,
+.btn-glitch:active .btn-glitch__label::after {
+  animation: none;
+}
+.btn-glitch:active::after {
+  opacity: 0.12;
+}
+
+/* ── Disabled ─────────────────────────────────── */
+.btn-glitch:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Keyframes ────────────────────────────────── */
+
+/* Halftone shimmer — shifts dot grid like a moiré */
+@keyframes glitch-halftone {
+  0%, 100% { background-position: 0 0; }
+  25%  { background-position: 1px 0; }
+  50%  { background-position: 1px 1px; }
+  75%  { background-position: 0 1px; }
+}
+
+/* Scanline — single fast lime sweep, then gone */
+@keyframes glitch-scanline-sweep {
+  0%   { opacity: 0.08; clip-path: inset(0 0 100% 0); }
+  20%  { opacity: 0.08; clip-path: inset(0 0 70% 0); }
+  40%  { opacity: 0.06; clip-path: inset(30% 0 40% 0); }
+  60%  { opacity: 0.04; clip-path: inset(60% 0 10% 0); }
+  80%  { opacity: 0.02; clip-path: inset(90% 0 0 0); }
+  100% { opacity: 0;    clip-path: inset(100% 0 0 0); }
+}
+
+/* Text jitter — micro displacement */
+@keyframes glitch-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  20%  { transform: translate(-1px, 0); }
+  40%  { transform: translate(1px, 1px); }
+  60%  { transform: translate(-1px, -1px); }
+  80%  { transform: translate(1px, 0); }
+}
+
+/* Chromatic ghost — lime text offset */
+@keyframes glitch-ghost {
+  0%   { opacity: 0;   transform: translate(0, 0);     clip-path: inset(0 0 100% 0); }
+  15%  { opacity: 0.55; transform: translate(2px, 0);   clip-path: inset(10% 0 50% 0); }
+  30%  { opacity: 0;   transform: translate(0, 0);      clip-path: inset(0 0 100% 0); }
+  50%  { opacity: 0.4; transform: translate(-2px, 0);   clip-path: inset(40% 0 15% 0); }
+  65%  { opacity: 0;   transform: translate(0, 0);      clip-path: inset(0 0 100% 0); }
+  80%  { opacity: 0.5; transform: translate(2px, -1px); clip-path: inset(55% 0 10% 0); }
+  100% { opacity: 0;   transform: translate(0, 0);      clip-path: inset(0 0 100% 0); }
+}
+
+/* Accent pip blink — like a status LED */
+@keyframes glitch-pip {
+  0%, 100% { opacity: 1; }
+  40% { opacity: 1; }
+  42% { opacity: 0.2; }
+  44% { opacity: 1; }
+  80% { opacity: 1; }
+  82% { opacity: 0; }
+  86% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glitch:hover::before,
+  .btn-glitch:hover::after,
+  .btn-glitch:hover .btn-glitch__label,
+  .btn-glitch:hover .btn-glitch__label::after,
+  .btn-glitch:hover .btn-glitch__accent {
+    animation: none !important;
+  }
+}
+
+/* ── Prose ────────────────────────────────────────── */
+.prose-covenant h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  margin: 2.5rem 0 1rem;
+}
+.prose-covenant h2 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 2.25rem 0 0.75rem;
+  border-top: 1px solid rgba(10, 10, 10, 0.15);
+  padding-top: 1.75rem;
+}
+.prose-covenant h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 1.75rem 0 0.5rem;
+}
+.prose-covenant h4 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wider);
+  color: var(--mute);
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-covenant p {
+  margin: 0.75rem 0;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+.prose-covenant ul, .prose-covenant ol {
+  margin: 0.75rem 0 1rem 1.25rem;
+}
+.prose-covenant ul li { list-style: disc; }
+.prose-covenant ol li { list-style: decimal; }
+.prose-covenant li { margin: 0.25rem 0; }
+.prose-covenant a {
+  color: var(--ink);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.3);
+}
+.prose-covenant a:hover {
+  color: var(--lime);
+  border-color: var(--lime);
+}
+.prose-covenant code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(10, 10, 10, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+}
+.prose-covenant pre {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.prose-covenant pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose-covenant table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: var(--text-ui);
+}
+.prose-covenant th, .prose-covenant td {
+  border: var(--border-default);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-covenant th {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-wider);
+  color: var(--mute);
+  background: rgba(10, 10, 10, 0.03);
+}
+.prose-covenant blockquote {
+  border-left: 2px solid var(--ink);
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin: 1rem 0;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+  font-style: italic;
+}
+.prose-covenant hr {
+  border: 0;
+  border-top: 1px solid rgba(10, 10, 10, 0.15);
+  margin: 2rem 0;
+}
+.prose-covenant strong { color: var(--ink); }
+
+/* ── Protocol Frame ───────────────────────────────── */
+.frame-border-outer {
+  position: fixed;
+  pointer-events: none;
+  border: 1px solid var(--mute-3);
+  z-index: 20;
+  inset: var(--inset-frame-outer);
+}
+
+.frame-border-inner {
+  position: fixed;
+  pointer-events: none;
+  border: 1px solid var(--mute-3);
+  z-index: 20;
+  inset: var(--inset-frame-inner);
+}
+
+.frame-corner {
+  position: fixed;
+  height: 12px;
+  width: 12px;
+  z-index: 20;
+  pointer-events: none;
+}
+.frame-corner--tl { top: var(--inset-frame-corner); left: var(--inset-frame-corner); border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); opacity: 0.55; }
+.frame-corner--tr { top: var(--inset-frame-corner); right: var(--inset-frame-corner); border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); opacity: 0.55; }
+.frame-corner--bl { bottom: var(--inset-frame-corner); left: var(--inset-frame-corner); border-bottom: 1px solid var(--ink); border-left: 1px solid var(--ink); opacity: 0.55; }
+.frame-corner--br { bottom: var(--inset-frame-corner); right: var(--inset-frame-corner); border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); opacity: 0.55; }
+
+/* ── Utility: Mono Label ──────────────────────────── */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.label-micro {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+/* ── Utility: Section Divider ─────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
+}
+.section-divider > span {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--mute);
+}
