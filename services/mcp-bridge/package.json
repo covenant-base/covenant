@@ -28,7 +28,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.26.0",
+    "@modelcontextprotocol/sdk": "1.29.0",
     "@covenant/sdk": "workspace:*",
     "viem": "^2.48.4",
     "zod": "4.3.6"
