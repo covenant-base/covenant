@@ -159,8 +159,8 @@ importers:
         specifier: 5.62.0
         version: 5.62.0(react@19.2.5)
       jose:
-        specifier: 5.9.6
-        version: 5.9.6
+        specifier: 6.2.2
+        version: 6.2.2
       next:
         specifier: 16.2.4
         version: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -244,8 +244,8 @@ importers:
         specifier: workspace:*
         version: link:../config
       jose:
-        specifier: 5.9.6
-        version: 5.9.6
+        specifier: 6.2.2
+        version: 6.2.2
       viem:
         specifier: ^2.48.4
         version: 2.48.4(bufferutil@4.1.0)(typescript@6.0.3)(utf-8-validate@6.0.6)(zod@4.3.6)
@@ -418,8 +418,8 @@ importers:
         specifier: 5.10.1
         version: 5.10.1
       jose:
-        specifier: ^5.9.6
-        version: 5.9.6
+        specifier: ^6.2.2
+        version: 6.2.2
       pino:
         specifier: 9.5.0
         version: 9.5.0
@@ -2937,9 +2937,6 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
-
-  jose@5.9.6:
-    resolution: {integrity: sha512-AMlnetc9+CV9asI19zHmrgS/WYsWUwCn2R7RzlbJWD7F9eWYUTGyBmU9o6PxngtLGOiDGPRu+Uc4fhKzbpteZQ==}
 
   jose@6.2.2:
     resolution: {integrity: sha512-d7kPDd34KO/YnzaDOlikGpOurfF0ByC2sEV4cANCtdqLlTfBlw2p14O/5d/zv40gJPbIQxfES3nSx1/oYNyuZQ==}
@@ -6736,8 +6733,6 @@ snapshots:
       picocolors: 1.1.1
 
   jiti@2.6.1: {}
-
-  jose@5.9.6: {}
 
   jose@6.2.2: {}
 
