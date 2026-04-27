@@ -22,7 +22,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource/archivo-black": "^5.2.8",
-    "@tanstack/react-query": "5.100.1",
+    "@tanstack/react-query": "5.100.5",
     "jose": "5.9.6",
     "next": "16.2.4",
     "react": "19.2.5",
